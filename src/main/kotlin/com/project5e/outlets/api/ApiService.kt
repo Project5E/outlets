@@ -15,18 +15,16 @@ interface ApiService {
 
     @Fluent
     fun parse(content: String, resultHandler: Handler<AsyncResult<JsonObject>>): ApiService
+}
 
+object ApiServiceFactory{
+    fun create(vertx: Vertx): ApiService {
+        return ApiServiceImpl(vertx)
+    }
+    /*
     @GenIgnore
-    companion object {
-        @GenIgnore
-        fun create(vertx: Vertx): ApiService {
-            return ApiServiceImpl(vertx)
-        }
-        /*
-        @GenIgnore
     fun createProxy(vertx: Vertx?, address: String? ): com.project5e.ttp.reactivex.services.db.TtpDbService? {
         return TtpDbService(TtpDbServiceVertxEBProxy(vertx, address))
     }
-         */
-    }
+     */
 }
