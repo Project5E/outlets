@@ -11,12 +11,12 @@ import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 
 @ProxyGen
-@VertxGen
 interface ApiService {
 
     @Fluent
     fun parse(content: String, resultHandler: Handler<AsyncResult<JsonObject>>): ApiService
 
+    @GenIgnore
     companion object {
         @GenIgnore
         fun create(vertx: Vertx): ApiService {
